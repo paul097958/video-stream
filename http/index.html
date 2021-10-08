@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>paula meet</title>
+</head>
+<style>
+    body {
+        background-color: gray;
+    }
+    video::-webkit-media-controls-timeline {
+        display: none;
+    }
+
+    video::-webkit-media-controls-current-time-display {
+        display: none;
+    }
+
+    video::-webkit-media-controls-time-remaining-display {
+        display: none;
+    }
+</style>
+<body>
+    <h1>this is a screen</h1>
+    <video id="video" controls width="1000"></video>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flv.js/1.4.2/flv.min.js"></script>
+    <script>
+        if (flvjs.isSupported()) {
+            let video = document.getElementById('video');
+            let flvPlayer = flvjs.createPlayer({
+                type: 'flv',
+                url: 'http://192.168.43.161:8000/live/test_stream.flv'
+            });
+            flvPlayer.attachMediaElement(video);
+            flvPlayer.load();
+        }
+    </script>
+</body>
+</html>
